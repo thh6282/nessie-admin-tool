@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nessie-admin-tool-pod
+spec:
+  containers:
+  - name: nessie-admin-tool
+    image: thh6282/nessie-admin-tool:latest
+    ports:
+    - containerPort: 8080
+    lifecycle:
+      postStart:
+        exec:
+          command:
+          - sh
+          - -c
+          - "mv nessie.zip /app/nessie.zip"
